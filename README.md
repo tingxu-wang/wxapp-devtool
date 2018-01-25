@@ -7,9 +7,26 @@
 - .js脚本语法检测并自动修改不符合标准的语法
 - .less文件在同级目录下转换为.wxss文件
 
+环境要求：
+
+请确认本机环境下已安装node.js环境，建议采用6.0.0以上的版本，确认命令：
+```bash
+    $ node -v
+```
+
 使用方法：
 
-- 拷贝本项目到本地，安装依赖包：
+- 拷贝本项目到本地
+```bash
+    $ git clone https://github.com/tingxu-wang/wxapp-devtool.git
+```
+
+- 拷贝成功后来到本项目根路径下
+```bash
+    $ cd wxapp-devtool
+```
+
+- 安装依赖包：
 ```
     $ npm install
 ```
