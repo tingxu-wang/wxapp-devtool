@@ -1,5 +1,8 @@
 {
   "name": "wxapp-devtool",
+  "bin": {
+    "wxapp-devtool": "index.js"
+  },
   "version": "1.0.0",
   "description": "微信小程序开发者辅助工具",
   "main": "index.js",
@@ -9,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "less": "^2.7.3"
+    "inquirer": "^5.0.1",
+    "less": "^2.7.3",
+    "yargs": "^11.0.0"
   },
   "homepage": "https://github.com/tingxu-wang/wxapp-devtool",
   "readme": "ERROR: No README data found!",
