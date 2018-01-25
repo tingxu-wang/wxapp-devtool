@@ -1,0 +1,23 @@
+{
+  "name": "wxapp-devtool",
+  "version": "1.0.0",
+  "description": "微信小程序开发者辅助工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "less": "^2.7.3"
+  },
+  "homepage": "https://github.com/tingxu-wang/wxapp-devtool",
+  "readme": "ERROR: No README data found!",
+  "bugs": {
+    "url": "https://github.com/tingxu-wang/wxapp-devtool/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingxu-wang/wxapp-devtool.git"
+  }
+}
