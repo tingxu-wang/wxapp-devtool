@@ -2,19 +2,19 @@
 
 为微信小程序开发者提供附加的功能,支持命令行方式使用
 
-#### 目前支持的功能：
+### 目前支持的功能：
 
 - .js脚本语法检测并自动修改不符合标准的语法
 - .less文件在同级目录下转换为.wxss文件
 
-#### 环境要求：
+### 环境要求：
 
 请确认本机环境下已安装node.js环境，建议采用6.0.0以上的版本，确认命令：
 ```bash
     $ node -v
 ```
 
-#### 使用方法：
+### 使用方法：
 
 - 拷贝本项目到本地
 ```bash
@@ -31,12 +31,19 @@
     $ npm install
 ```
 
-- 注册命令行命令
+- 注册命令行命令，之后便可在命令行使用`wxapp-devtool`调用本工具
 ```
     $ npm link
 ```
 
-- 你可以使用`wxapp-devtool`或`wxapp-devtool -h`命令查看本工具支持的所有命令，如下
+### 命令详解：
+
+#### 命令： `wxapp-devtool` 或 `wxapp-devtool -h`
+##### 功能：
+
+查看本工具支持的所有命令
+
+##### 运行示例：
 ```
     $ wxapp-devtool
     Options:
@@ -54,39 +61,61 @@
 
 ```
 
-- 执行成功后便可在命令行中使用`wxapp-devtool -i`命令初始化本项目
-```
-    $ wxapp-devtool -i
-```
+#### 命令： `wxapp-devtool -i`
 
-- 执行命令后命令行会弹出问题，指定你的小程序项目路径，这里需要注意的是必须输入本地磁盘下的根路径，如：
-```
-    $ wxapp-devtool -i
-    ? 请输入小程序项目绝对路径 /Users/tingxuwang/Documents/code/test/weapp-devtool/weapp
-```
+##### 功能：
 
-- 输入路径合法后项目便会自动运行命令`wxapp-devtool -w`监听指定文件夹下的文件变动
+指定小程序项目路径（初始化），指定你的小程序项目路径，这里需要注意的是必须输入本地磁盘下的根路径；输入路径合法后项目便会自动运行命令`wxapp-devtool -w`监听指定文件夹下的文件变动
+
+##### 运行示例：
+
 ```
     $ wxapp-devtool -i
     ? 请输入小程序项目绝对路径 /Users/tingxuwang/Documents/code/test/weapp-devtool/weapp
     保存默认配置成功！目标小程序路径为：/Users/tingxuwang/Documents/code/test/weapp-devtool/weapp
     devtool 启动成功, 监听路径为: /Users/tingxuwang/Documents/code/test/weapp-devtool/weapp
-
 ```
 
-- 在之后的使用中只需运行`wxapp-devtool -w`命令即可开启本工具的文件观测功能
+#### 命令： `wxapp-devtool -w`
 
-- 在定义过一次小陈股项目路径后，之后再次启动wxapp-devtool后不会再次询问，若想再次修改，可以再次使用命令重新定义
+##### 功能：
+
+开启文件监听功能，监听路径为`wxapp-devtool -i`命令指定的文件目录
+
+##### 备注：
+
+在定义过一次小程序项目路径后，之后再次启动wxapp-devtool后不会再次询问，若想再次修改，可以再次使用命令`wxapp-devtool -i`重新定义
+
+##### 运行示例：
+
 ```
-    $ wxapp-devtool -i
-    ? 请输入小程序项目绝对路径
+    $ wxapp-devtool -w
+    devtool 启动成功, 监听路径为: /Users/tingxuwang/Documents/code/test/weapp-devtool/weapp
 ```
 
-- 运行`wxapp-devtool --fm`命令，开发工具会读取git下记录的所有修改文件并对它们运行eslint --fix修改其中的语法错误，强烈建议在提交git仓库前使用此命令规范js代码
+#### 命令： `wxapp-devtool --fm`
 
-- 若使用`wxapp-devtool -w --fa`启动项目，会开启自动fix功能，每次修改js文件后会自动调用eslint --fix命令对此文件执行语法纠错，此操作会修改文件本身的内容
+##### 功能：
 
-#### 其他说明：
+读取指定小程序项目中git仓库中记录的所有修改文件并对它们运行eslint --fix修改其中的语法错误，强烈建议在提交git仓库前使用此命令规范js代码
+
+##### 运行示例：
+```
+    $ wxapp-devtool --fm
+```
+
+#### 命令： `wxapp-devtool -w --fa`
+
+##### 功能：
+
+开启自动fix功能，每次修改js文件后会自动调用eslint --fix命令对此文件执行语法纠错，此操作会修改文件本身的内容
+
+##### 运行示例：
+```
+    $ wxapp-devtool -w --fa
+```
+
+### 其他说明：
 - 本项目的js语法校验功能采用eslint实现，需要在小程序项目目录下部署配置文件`.eslintrc.json`，若目标小程序项目下没有此文件，本工具会自动部署默认配置，你可以根据你的需要更改此文件，默认配置如下：
 ```json
 {
