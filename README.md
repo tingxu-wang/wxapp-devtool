@@ -57,6 +57,10 @@
                             --fix，本操作会更改文件的内容 [boolean] [default: false]
       -i, --init            定义目标小程序路径                             [boolean]
       -w, --watch           监听项目文件更改              [boolean] [default: false]
+      --il, --init-less     找到目标项目中所有的.wxss文件并在同级目录下复制生成相同内容的.less
+                                                          [boolean] [default: false]
+      -f, --force           类似git --force，强制运行有一定风险性的操作
+                                                          [boolean] [default: false]
       -h                    Show help                                      [boolean]
 
 ```
@@ -104,7 +108,7 @@
     $ wxapp-devtool --fm
 ```
 
-#### 命令： `wxapp-devtool -w --fa`
+#### 命令： `wxapp-devtool --fa`
 
 ##### 功能：
 
@@ -112,7 +116,22 @@
 
 ##### 运行示例：
 ```
-    $ wxapp-devtool -w --fa
+    $ wxapp-devtool --fa
+```
+
+#### 命令： `wxapp-devtool --il` 和 `wxapp-devtool --il --force`
+
+##### 功能：
+
+找到小程序目录下的所有.wxss文件，并在同文件夹下生成相同内容且同名的.less文件，用于兼容老项目。
+
+如找到项目下有/pages/index/index.wxss文件则自动生成/pages/index/index.less文件，若该文件夹下已有index.less文件，将会不做操作。
+
+若想在任何情况下都生成less文件，请使用`wxapp-devtool --il --force`命令，该命令会项目中覆盖已有的.less文件，请注意。
+
+##### 运行示例：
+```
+    $ wxapp-devtool --il
 ```
 
 ### 其他说明：

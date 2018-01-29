@@ -5,6 +5,8 @@ var config = require('./config.json'),
 var fs = require('fs');
 
 module.exports = function(argv){
+	console.log(new Date().toString());
+
 	eslint.command(argv);
 	less.command(argv);
 };

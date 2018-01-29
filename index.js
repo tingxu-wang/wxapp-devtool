@@ -38,16 +38,28 @@ var fs = require('fs'),
 			describe: '监听项目文件更改',
 			type: 'boolean'
 		})
+		.option('il', {
+			alias: 'init-less',
+			default: false,
+			describe: '找到目标项目中所有的.wxss文件并在同级目录下复制生成相同内容的.less',
+			type: 'boolean'
+		})
+		.option('f', {
+			alias: 'force',
+			default: false,
+			describe: '类似git --force，强制运行有一定风险性的操作',
+			type: 'boolean'
+		})
 		.help('h')
 		.argv;
 
 function runWatch(){
 	fs.exists(config.project_path, function(exist){
 		if(exist){
-			console.log(`devtool 启动成功, 监听路径为: ${config.project_path}`);
+			console.log(`success: devtool 启动成功, 监听路径为: ${config.project_path}`);
 			watchWorker(argv);
 		}else{
-			console.log(`项目路径: ${argv.project_path} 不存在, 请输入项目的绝对路径`)
+			console.log(`error: 项目路径: ${argv.project_path} 不存在, 请输入项目的绝对路径`)
 		}
 	});
 }
@@ -82,18 +94,18 @@ if(argv.i || !config.project_path){ // 项目初始化
 							console.log(e);
 							return
 						}
-						console.log(`保存默认配置成功！目标小程序路径为：${projectPath}`);
+						console.log(`success: 保存默认配置成功！目标小程序路径为：${projectPath}`);
 						runWatch();
 					})
 				}else{
-					console.log(`项目路径: ${projectPath} 文件夹不存在`)
+					console.log(`error: 项目路径: ${projectPath} 文件夹不存在`)
 				}
 			});
 		}else{
-			console.log(`${projectPath} 路径不符合规范，请出入项目的本地绝对路径 如：/Users/your_username/wx-program`)
+			console.log(`error: ${projectPath} 路径不符合规范，请出入项目的本地绝对路径 如：/Users/your_username/wx-program`)
 		}
 	})
-}else if(argv.w){ // watch命令
+}else if(argv.w || argv.fa){
 	runWatch();
 }else{ // 其他命令
 	runCommand();
